@@ -1,12 +1,13 @@
+using System;
+
 namespace esharp.solidity.compiler
 {
-
-    private int _position;
-
-    private readonly string _text;
-
     public class Lexer
     {
+        private int _position;
+
+        private readonly string _text;
+
         public Lexer(string text)
         {
             _text = text;
