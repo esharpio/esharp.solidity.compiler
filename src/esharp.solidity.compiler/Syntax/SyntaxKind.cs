@@ -1,4 +1,4 @@
-namespace esharp.solidity.compiler
+namespace esharp.solidity.compiler.Syntax
 {
     public enum SyntaxKind
     {

@@ -13,7 +13,7 @@ namespace esharp.solidity.compiler
                 if (string.IsNullOrWhiteSpace(line))
                     return;
 
-                var syntaxTree = SyntaxTree.Parse(line);
+                // var syntaxTree = SyntaxTree.Parse(line);
             }
         }
     }
