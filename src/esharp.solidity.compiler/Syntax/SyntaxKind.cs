@@ -13,6 +13,7 @@ namespace esharp.solidity.compiler.Syntax
 
         // Tokens
         EndOfFileToken,
+        WhitespaceToken,
         NumberToken,
         StringToken,
         PlusToken,
