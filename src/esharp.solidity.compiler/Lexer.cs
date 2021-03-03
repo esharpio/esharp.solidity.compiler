@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Immutable;
+using esharp.solidity.compiler.Syntax;
 
 namespace esharp.solidity.compiler
 {
@@ -33,11 +34,14 @@ namespace esharp.solidity.compiler
             // tokens = new ImmutableList<String>();
         }
 
-
-
-        public void Next()
+        public SyntaxToken Lex()
         {
-            _position++;
+            return null;
         }
+
+        // public void Next()
+        // {
+        //     _position++;
+        // }
     }
 }

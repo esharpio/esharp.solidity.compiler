@@ -19,7 +19,7 @@ namespace esharp.solidity.compiler.Syntax
         public static SyntaxTree Parse(string text)
         {
             var parser = new Parser(text);
-            return parser.Parse();
+            return null; // parser.Parse();
         }
 
         public static IEnumerable<SyntaxToken> ParseTokens(string text)
