@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\esharp\esharp.csproj" />
+    <ProjectReference Include="..\esharp.solidity.compiler\esharp.solidity.compiler.csproj" />
   </ItemGroup>
 
 </Project>
