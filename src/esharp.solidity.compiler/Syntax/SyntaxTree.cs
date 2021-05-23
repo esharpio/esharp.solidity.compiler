@@ -21,6 +21,8 @@ namespace esharp.solidity.compiler.Syntax
             var parser = new Parser(text);
             return null; // parser.Parse();
         }
+        
+        
 
         public static IEnumerable<SyntaxToken> ParseTokens(string text)
         {

@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Minsk.CodeAnalysis.Syntax;
-using Minsk.CodeAnalysis.Text;
+using esharp.solidity.compiler.Syntax;
 using Xunit;
 
 namespace esharp.tests
@@ -13,7 +12,7 @@ namespace esharp.tests
         public void Lexer_Lexes_UnterminatedString()
         {
             var text = "\"text";
-            var tokens = SyntaxTree.ParseTokens(text, out var diagnostics);
+            var tokens = SyntaxTree.ParseTokens(text);
 
             var token = Assert.Single(tokens);
             Assert.Equal(SyntaxKind.StringToken, token.Kind);
