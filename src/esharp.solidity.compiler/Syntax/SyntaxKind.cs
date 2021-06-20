@@ -51,17 +51,21 @@ namespace esharp.solidity.compiler.Syntax
 
         // Keywords
         BreakKeyword,
+        ContractKeyword,
         ContinueKeyword,
         ElseKeyword,
         FalseKeyword,
         ForKeyword,
         FunctionKeyword,
         IfKeyword,
+        IsKeyword,
         LetKeyword,
+        PureKeyword,
         ReturnKeyword,
         ToKeyword,
         TrueKeyword,
         VarKeyword,
+        ViewKeyword,
         WhileKeyword,
         DoKeyword,
 

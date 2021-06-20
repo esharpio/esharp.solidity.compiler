@@ -68,6 +68,8 @@ namespace esharp.solidity.compiler.Syntax
                     return SyntaxKind.BreakKeyword;
                 case "continue":
                     return SyntaxKind.ContinueKeyword;
+                case "contract":
+                    return SyntaxKind.ContractKeyword;
                 case "else":
                     return SyntaxKind.ElseKeyword;
                 case "false":
@@ -77,6 +79,8 @@ namespace esharp.solidity.compiler.Syntax
                 case "function":
                     return SyntaxKind.FunctionKeyword;
                 case "if":
+                    return SyntaxKind.IfKeyword;
+                case "is":
                     return SyntaxKind.IfKeyword;
                 case "let":
                     return SyntaxKind.LetKeyword;
