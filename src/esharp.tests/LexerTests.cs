@@ -26,20 +26,23 @@ namespace esharp.tests
         [Fact]
         public void Lexer_Should_Get_Contract_Token()
         {
-            var text = "Contract";
+            var text = "contract";
             var tokens = SyntaxTree.ParseTokens(text);
 
             var token = Assert.Single(tokens);
-            Assert.Equal(SyntaxKind.StringToken, token.Kind);
+            Assert.Equal(SyntaxKind.ContractKeyword, token.Kind);
             Assert.Equal(text, token.Text);
+        }
 
-            // Assert.Equal(4, tokens.Count());
-            // Assert.Equal(SyntaxKind.StringToken, token.Kind);
+        [Fact]
+        public void Lexer_Should_Get_Contract_Tokens()
+        {
+            var text = "    contract Greeter {";
+            var tokens = SyntaxTree.ParseTokens(text).ToList();
+
+            Assert.Equal(6, tokens.Count());
+            Assert.Equal(SyntaxKind.ContractKeyword, tokens[1].Kind);
             // Assert.Equal(text, token.Text);
-
-            // var diagnostic = Assert.Single(diagnostics);
-            // Assert.Equal(new TextSpan(0, 1), diagnostic.Location.Span);
-            // Assert.Equal("Unterminated string literal.", diagnostic.Message);
         }
     }
 }
