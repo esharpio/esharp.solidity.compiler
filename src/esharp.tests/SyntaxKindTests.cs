@@ -9,12 +9,39 @@ namespace esharp.tests
     public class SyntaxKindTests
     {
         [Fact]
-        public void Lexer_Should_Get_Keyword_Kinds()
+        public void Lexer_Should_Get_Keyword_Contract_Kind()
         {
-            var text = "contract";
-            var kind = SyntaxFacts.GetKeywordKind(text);
+            String text = "contract";
+            SyntaxKind kind = SyntaxFacts.GetKeywordKind(text);
 
             Assert.Equal(SyntaxKind.ContractKeyword, kind);
+        }
+
+        [Fact]
+        public void Lexer_Should_Get_Keyword_Pragma_Kind()
+        {
+            String text = "pragma";
+            SyntaxKind kind = SyntaxFacts.GetKeywordKind(text);
+
+            Assert.Equal(SyntaxKind.PragmaKeyword, kind);
+        }
+
+        [Fact]
+        public void Lexer_Should_Get_Keyword_Pure_Kind()
+        {
+            String text = "pure";
+            SyntaxKind kind = SyntaxFacts.GetKeywordKind(text);
+
+            Assert.Equal(SyntaxKind.PureKeyword, kind);
+        }
+
+        [Fact]
+        public void Lexer_Should_Get_Keyword_View_Kind()
+        {
+            String text = "view";
+            SyntaxKind kind = SyntaxFacts.GetKeywordKind(text);
+
+            Assert.Equal(SyntaxKind.ViewKeyword, kind);
         }
     }
 }

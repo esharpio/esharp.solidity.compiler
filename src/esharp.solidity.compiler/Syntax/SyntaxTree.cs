@@ -22,8 +22,6 @@ namespace esharp.solidity.compiler.Syntax
             return null; // parser.Parse();
         }
         
-        
-
         public static IEnumerable<SyntaxToken> ParseTokens(string text)
         {
             var lexer = new Lexer(text);

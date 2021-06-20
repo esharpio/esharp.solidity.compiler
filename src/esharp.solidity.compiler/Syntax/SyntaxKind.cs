@@ -60,6 +60,7 @@ namespace esharp.solidity.compiler.Syntax
         IfKeyword,
         IsKeyword,
         LetKeyword,
+        PragmaKeyword,
         PureKeyword,
         ReturnKeyword,
         ToKeyword,

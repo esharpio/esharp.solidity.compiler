@@ -84,6 +84,10 @@ namespace esharp.solidity.compiler.Syntax
                     return SyntaxKind.IfKeyword;
                 case "let":
                     return SyntaxKind.LetKeyword;
+                case "pragma":
+                    return SyntaxKind.PragmaKeyword;
+                case "pure":
+                    return SyntaxKind.PureKeyword;
                 case "return":
                     return SyntaxKind.ReturnKeyword;
                 case "to":
@@ -92,6 +96,8 @@ namespace esharp.solidity.compiler.Syntax
                     return SyntaxKind.TrueKeyword;
                 case "var":
                     return SyntaxKind.VarKeyword;
+                case "view":
+                    return SyntaxKind.ViewKeyword;
                 case "while":
                     return SyntaxKind.WhileKeyword;
                 case "do":
