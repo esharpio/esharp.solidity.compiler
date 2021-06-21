@@ -348,3 +348,7 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+src/.idea/.idea.src.dir/.idea/
+
+src/esharp.console/.idea/.idea.esharp.console.dir/.idea/
