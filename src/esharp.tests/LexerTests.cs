@@ -11,7 +11,7 @@ namespace esharp.tests
         [Fact]
         public void Lexer_Lexes_UnterminatedString()
         {
-            var text = "\"text";
+            var text = "text";
             var tokens = SyntaxTree.ParseTokens(text);
 
             var token = Assert.Single(tokens);
@@ -31,6 +31,17 @@ namespace esharp.tests
 
             var token = Assert.Single(tokens);
             Assert.Equal(SyntaxKind.ContractKeyword, token.Kind);
+            Assert.Equal(text, token.Text);
+        }
+
+        [Fact]
+        public void Lexer_Should_Get_Interface_Token()
+        {
+            var text = "interface";
+            var tokens = SyntaxTree.ParseTokens(text);
+
+            var token = Assert.Single(tokens);
+            Assert.Equal(SyntaxKind.InterfaceKeyword, token.Kind);
             Assert.Equal(text, token.Text);
         }
 

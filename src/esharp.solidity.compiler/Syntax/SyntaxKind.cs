@@ -58,6 +58,7 @@ namespace esharp.solidity.compiler.Syntax
         ForKeyword,
         FunctionKeyword,
         IfKeyword,
+        InterfaceKeyword,
         IsKeyword,
         LetKeyword,
         PragmaKeyword,
