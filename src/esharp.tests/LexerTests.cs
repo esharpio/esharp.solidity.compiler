@@ -53,7 +53,6 @@ namespace esharp.tests
 
             Assert.Equal(6, tokens.Count());
             Assert.Equal(SyntaxKind.ContractKeyword, tokens[1].Kind);
-            // Assert.Equal(text, token.Text);
         }
     }
 }
