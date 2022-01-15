@@ -145,8 +145,6 @@ namespace esharp.solidity.compiler.Syntax
                     return "!";
                 case SyntaxKind.EqualsToken:
                     return "=";
-                case SyntaxKind.TildeToken:
-                    return "~";
                 case SyntaxKind.LessToken:
                     return "<";
                 case SyntaxKind.LessOrEqualsToken:
@@ -161,16 +159,8 @@ namespace esharp.solidity.compiler.Syntax
                     return "&&";
                 case SyntaxKind.AmpersandEqualsToken:
                     return "&=";
-                case SyntaxKind.PipeToken:
-                    return "|";
-                case SyntaxKind.PipeEqualsToken:
-                    return "|=";
                 case SyntaxKind.PipePipeToken:
                     return "||";
-                case SyntaxKind.HatToken:
-                    return "^";
-                case SyntaxKind.HatEqualsToken:
-                    return "^=";
                 case SyntaxKind.EqualsEqualsToken:
                     return "==";
                 case SyntaxKind.BangEqualsToken:
@@ -201,8 +191,8 @@ namespace esharp.solidity.compiler.Syntax
                     return "function";
                 case SyntaxKind.IfKeyword:
                     return "if";
-                case SyntaxKind.LetKeyword:
-                    return "let";
+                // case SyntaxKind.LetKeyword:
+                //     return "let";
                 case SyntaxKind.ReturnKeyword:
                     return "return";
                 case SyntaxKind.ToKeyword:
@@ -259,10 +249,10 @@ namespace esharp.solidity.compiler.Syntax
                     return SyntaxKind.SlashToken;
                 case SyntaxKind.AmpersandEqualsToken:
                     return SyntaxKind.AmpersandToken;
-                case SyntaxKind.PipeEqualsToken:
-                    return SyntaxKind.PipeToken;
-                case SyntaxKind.HatEqualsToken:
-                    return SyntaxKind.HatToken;
+                // case SyntaxKind.PipeEqualsToken:
+                //     return SyntaxKind.PipeToken;
+                // case SyntaxKind.HatEqualsToken:
+                //     return SyntaxKind.HatToken;
                 default:
                     throw new Exception($"Unexpected syntax: '{kind}'");
             }

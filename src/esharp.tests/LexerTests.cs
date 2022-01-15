@@ -48,11 +48,22 @@ namespace esharp.tests
         [Fact]
         public void Lexer_Should_Get_Contract_Tokens()
         {
-            var text = "    contract Greeter {";
+            var text = "contract Greeter {";
             var tokens = SyntaxTree.ParseTokens(text).ToList();
 
             Assert.Equal(6, tokens.Count());
             Assert.Equal(SyntaxKind.ContractKeyword, tokens[1].Kind);
+        }
+        
+        [Fact]
+        public void Lexer_Should_Simple_Addition_Tokens()
+        {
+            var text = "a + b";
+            var tokens = SyntaxTree.ParseTokens(text);
+            Assert.Equal(5, tokens.Count());
+            // var token = Assert.Single(tokens);
+            // Assert.Equal(SyntaxKind.ContractKeyword, token.Kind);
+            // Assert.Equal(text, token.Text);
         }
     }
 }
