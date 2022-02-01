@@ -17,4 +17,16 @@
     <ProjectReference Include="..\esharp.solidity.compiler\esharp.solidity.compiler.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Contracts\4_Adder_ByteCode.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Contracts\4_Adder.sol">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Contracts\4_Adder_OPCODES.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

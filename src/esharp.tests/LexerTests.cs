@@ -51,8 +51,8 @@ namespace esharp.tests
             var text = "contract Greeter {";
             var tokens = SyntaxTree.ParseTokens(text).ToList();
 
-            Assert.Equal(6, tokens.Count());
-            Assert.Equal(SyntaxKind.ContractKeyword, tokens[1].Kind);
+            Assert.Equal(5, tokens.Count());
+            Assert.Equal(SyntaxKind.ContractKeyword, tokens[0].Kind);
         }
         
         [Fact]
@@ -64,6 +64,22 @@ namespace esharp.tests
             // var token = Assert.Single(tokens);
             // Assert.Equal(SyntaxKind.ContractKeyword, token.Kind);
             // Assert.Equal(text, token.Text);
+        }
+        
+        [Fact]
+        public void Lexer_Should_Sol_File()
+        {
+            foreach (string line in System.IO.File.ReadLines(@"./Contracts/4_Adder.sol"))
+            {  
+                System.Console.WriteLine(line);  
+                var tokens = SyntaxTree.ParseTokens(line);
+                // Assert.Equal(5, tokens.Count());
+                // var token = Assert.Single(tokens);
+                // Assert.Equal(SyntaxKind.ContractKeyword, token.Kind);
+                // Assert.Equal(text, token.Text);
+                
+                Console.WriteLine(tokens);
+            }
         }
     }
 }
