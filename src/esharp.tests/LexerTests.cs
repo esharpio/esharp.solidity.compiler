@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using esharp.solidity.compiler.Syntax;
+using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace esharp.tests
@@ -80,6 +82,20 @@ namespace esharp.tests
                 
                 Console.WriteLine(tokens);
             }
+        }
+        
+        [Fact]
+        public void Lexer_Should_Get_Contract_Tokens_From_File()
+        {
+            var contract = File.ReadAllText("Contracts/4_Adder_ByteCode.json");
+            var myJObject = JObject.Parse(contract);
+            Console.WriteLine(myJObject.SelectToken("object").Value<string>());
+
+            string op_codes = myJObject.SelectToken("object").Value<string>();
+            var tokens = SyntaxTree.ParseTokens(op_codes).ToList();
+
+            Assert.Equal(6, tokens.Count());
+            Assert.Equal(SyntaxKind.ContractKeyword, tokens[1].Kind);
         }
     }
 }
