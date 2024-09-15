@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using esharp.solidity.compiler.Syntax;
 
-namespace esharp.solidity.compiler.CodeAnalysis
+namespace esharp.solidity.compiler.CodeAnalysis.Syntax
 {
-    sealed class BinaryExpressionSyntax : ExpressionSyntax
+    public sealed class BinaryExpressionSyntax : ExpressionSyntax
     {
         public BinaryExpressionSyntax(ExpressionSyntax left, SyntaxToken operatorToken, ExpressionSyntax right)
         {

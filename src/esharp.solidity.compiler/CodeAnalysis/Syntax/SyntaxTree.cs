@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using esharp.solidity.compiler.CodeAnalysis;
 
-namespace esharp.solidity.compiler.Syntax
+namespace esharp.solidity.compiler.CodeAnalysis.Syntax
 {
     sealed class SyntaxTree
     {

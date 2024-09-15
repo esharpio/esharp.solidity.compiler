@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace esharp.solidity.compiler.Syntax
+namespace esharp.solidity.compiler.CodeAnalysis.Syntax
 {
     public abstract class SyntaxNode
     {

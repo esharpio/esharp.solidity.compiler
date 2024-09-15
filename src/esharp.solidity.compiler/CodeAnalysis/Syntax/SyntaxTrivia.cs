@@ -1,7 +1,7 @@
 
 using esharp.solidity.compiler.Text;
 
-namespace esharp.solidity.compiler.Syntax
+namespace esharp.solidity.compiler.CodeAnalysis.Syntax
 {
     public sealed class SyntaxTrivia
     {
