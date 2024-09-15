@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Linq;
 using esharp.solidity.compiler.CodeAnalysis;
-using esharp.solidity.compiler.Syntax;
+using esharp.solidity.compiler.CodeAnalysis.Syntax;
+using esharp.solidity.compiler.CodeAnalysis.Binding;
 
 namespace esharp.solidity.compiler
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
-            bool showTree = false;
+            var showTree = false;
 
             while (true)
             {
@@ -31,30 +32,33 @@ namespace esharp.solidity.compiler
                 }
 
                 var syntaxTree = SyntaxTree.Parse(line);
+                var binder = new Binder();
+                var boundExpression = binder.BindExpression(syntaxTree.Root);
+
+                var diagnostics = syntaxTree.Diagnostics.Concat(binder.Diagnostics).ToArray();
+
 
                 if (showTree)
                 {
-                    var color = Console.ForegroundColor;
                     Console.ForegroundColor = ConsoleColor.DarkGray;
                     PrettyPrint(syntaxTree.Root);
-                    Console.ForegroundColor = color;
+                    Console.ResetColor();
                 }
 
-                if (!syntaxTree.Diagnostics.Any())
+                if (!diagnostics.Any())
                 {
-                    var e = new Evaluator(syntaxTree.Root);
+                    var e = new Evaluator(boundExpression);
                     var result = e.Evaluate();
                     Console.WriteLine(result);
                 }
                 else
                 {
-                    var color = Console.ForegroundColor;
                     Console.ForegroundColor = ConsoleColor.DarkRed;
 
-                    // foreach (var diagnostic in syntaxTree.Diagnostics)
-                    //     Console.WriteLine(diagnostic);
+                    foreach (var diagnostic in diagnostics)
+                        Console.WriteLine(diagnostic);
 
-                    Console.ForegroundColor = color;
+                    Console.ResetColor();
                 }
             }
         }
@@ -74,12 +78,12 @@ namespace esharp.solidity.compiler
             }
 
             Console.WriteLine();
-            
-            indent += isLast ? "    " : "│   ";
+
+            indent += isLast ? "   " : "│   ";
 
             var lastChild = node.GetChildren().LastOrDefault();
 
-            foreach (var child in node.GetChildren())            
+            foreach (var child in node.GetChildren())
                 PrettyPrint(child, indent, child == lastChild);
         }
     }

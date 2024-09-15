@@ -24,3 +24,4 @@ namespace esharp.solidity.compiler.CodeAnalysis.Syntax
             yield return LiteralToken;
         }
     }
+}

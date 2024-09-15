@@ -1,5 +1,5 @@
 using System;
-using esharp.solidity.compiler.CodeAnalysis.Binding
+using esharp.solidity.compiler.CodeAnalysis.Binding;
 
 namespace esharp.solidity.compiler.CodeAnalysis
 {
