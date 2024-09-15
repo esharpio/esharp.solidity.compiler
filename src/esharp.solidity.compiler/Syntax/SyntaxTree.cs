@@ -5,23 +5,23 @@ namespace esharp.solidity.compiler.Syntax
 {
     public sealed class SyntaxTree
     {
-        public SyntaxTree(ExpressionSyntax root, SyntaxToken endOfFileToken)
+        public SyntaxTree(IEnumerable<string> diagnostics, ExpressionSyntax root, SyntaxToken endOfFileToken)
         {
-            //Diagnostics = diagnostics.ToArray();
+            Diagnostics = diagnostics.ToArray();
             Root = root;
             EndOfFileToken = endOfFileToken;
         }
 
-        //public IReadOnlyList<Diagnostic> Diagnostics { get; }
+        public IReadOnlyList<string> Diagnostics { get; }
         public ExpressionSyntax Root { get; }
         public SyntaxToken EndOfFileToken { get; }
 
         public static SyntaxTree Parse(string text)
         {
             var parser = new Parser(text);
-            return null; // parser.Parse();
+            return parser.Parse();
         }
-        
+
         public static IEnumerable<SyntaxToken> ParseTokens(string text)
         {
             var lexer = new Lexer(text);
