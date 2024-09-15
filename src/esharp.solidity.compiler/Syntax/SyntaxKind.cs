@@ -95,5 +95,7 @@ namespace esharp.solidity.compiler.Syntax
         ParenthesizedExpression,
         AssignmentExpression,
         CallExpression,
+
+        NumberExpression
     }
 }

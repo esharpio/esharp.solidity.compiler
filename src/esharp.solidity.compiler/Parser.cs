@@ -26,7 +26,7 @@ namespace esharp.solidity.compiler
                 if (token.Kind != SyntaxKind.WhitespaceToken &&
                     token.Kind != SyntaxKind.BadToken)
                 {
-                    tokens.Add(token);
+                    tokens.Add(token);   
                 }
             } while (token.Kind != SyntaxKind.EndOfFileToken);
 
@@ -119,3 +119,4 @@ namespace esharp.solidity.compiler
             return new NumberExpressionSyntax(numberToken);
         }
     }
+}

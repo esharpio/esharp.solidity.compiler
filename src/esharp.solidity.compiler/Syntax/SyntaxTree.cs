@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using esharp.solidity.compiler.CodeAnalysis;
 
 namespace esharp.solidity.compiler.Syntax
 {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using esharp.solidity.compiler.CodeAnalysis;
 
 namespace esharp.solidity.compiler.Syntax
 {
