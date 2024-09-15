@@ -7,9 +7,9 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/esharp.tests/esharp.tests.csproj",
+                "${workspaceFolder}/src/esharp.solidity.compiler/esharp.solidity.compiler.csproj",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -19,9 +19,9 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/src/esharp.tests/esharp.tests.csproj",
+                "${workspaceFolder}/src/esharp.solidity.compiler/esharp.solidity.compiler.csproj",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -32,9 +32,8 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/src/esharp.tests/esharp.tests.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "--project",
+                "${workspaceFolder}/src/esharp.solidity.compiler/esharp.solidity.compiler.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
