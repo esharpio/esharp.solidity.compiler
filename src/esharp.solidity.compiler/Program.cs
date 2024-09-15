@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using esharp.solidity.compiler.CodeAnalysis;
 using esharp.solidity.compiler.Syntax;
 
 namespace esharp.solidity.compiler

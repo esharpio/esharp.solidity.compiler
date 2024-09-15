@@ -4,7 +4,7 @@ using esharp.solidity.compiler.CodeAnalysis;
 
 namespace esharp.solidity.compiler.Syntax
 {
-    public sealed class SyntaxTree
+    sealed class SyntaxTree
     {
         public SyntaxTree(IEnumerable<string> diagnostics, ExpressionSyntax root, SyntaxToken endOfFileToken)
         {
@@ -21,19 +21,6 @@ namespace esharp.solidity.compiler.Syntax
         {
             var parser = new Parser(text);
             return parser.Parse();
-        }
-
-        public static IEnumerable<SyntaxToken> ParseTokens(string text)
-        {
-            var lexer = new Lexer(text);
-            while (true)
-            {
-                var token = lexer.Lex();
-                if (token.Kind == SyntaxKind.EndOfFileToken)
-                    break;
-
-                yield return token;
-            }
         }
     }
 }
