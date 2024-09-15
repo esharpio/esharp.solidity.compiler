@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using esharp.solidity.compiler.Syntax;
+using esharp.solidity.compiler.CodeAnalysis.Syntax;
 
 namespace esharp.solidity.compiler.CodeAnalysis.Binding
 {
