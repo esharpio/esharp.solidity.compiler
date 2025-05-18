@@ -1342,7 +1342,8 @@ namespace esharp.solidity.compiler
             else
             {
                 // This could be a variable declaration or an expression
-                if (Check(TokenType.Identifier) && Peek().Type == TokenType.Identifier)
+                // if (Check(TokenType.Identifier) && Peek().Type == TokenType.Identifier)
+                if (Check(TokenType.Identifier))
                 {
                     // Variable declaration
                     string typeName = Advance().Value;
