@@ -4,17 +4,34 @@ namespace esharp.solidity.compiler
 {
     class Program
     {
-        static void Main(String[] args)
+        public static void Main(string[] args)
         {
-            while (true)
+            if (args.Length == 0)
             {
-                Console.Write("> ");
-                String line = Console.ReadLine();
-                if (string.IsNullOrWhiteSpace(line))
-                    return;
-
-                // var syntaxTree = SyntaxTree.Parse(line);
+                Console.WriteLine("Usage: SolidityCompiler <filename>");
+                return;
             }
+            
+            string source = System.IO.File.ReadAllText(args[0]);
+            byte[] bytecode = CompileString(source);
+            
+            // Write bytecode to a file
+            string outputPath = Path.ChangeExtension(args[0], ".bin");
+            File.WriteAllBytes(outputPath, bytecode);
+            Console.WriteLine($"Compiled bytecode written to {outputPath}");
         }
+        
+        // static void Main(String[] args)
+        // {
+        //     while (true)
+        //     {
+        //         Console.Write("> ");
+        //         String line = Console.ReadLine();
+        //         if (string.IsNullOrWhiteSpace(line))
+        //             return;
+
+        //         // var syntaxTree = SyntaxTree.Parse(line);
+        //     }
+        // }
     }
 }
