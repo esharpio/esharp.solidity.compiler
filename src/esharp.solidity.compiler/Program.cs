@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace esharp.solidity.compiler
 {
@@ -13,7 +14,7 @@ namespace esharp.solidity.compiler
             }
             
             string source = System.IO.File.ReadAllText(args[0]);
-            byte[] bytecode = CompileString(source);
+            byte[] bytecode = SolidityCompiler.CompileString(source);
             
             // Write bytecode to a file
             string outputPath = Path.ChangeExtension(args[0], ".bin");

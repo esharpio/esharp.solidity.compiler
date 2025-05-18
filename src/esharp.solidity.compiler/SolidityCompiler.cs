@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace SolidityCompiler
+namespace esharp.solidity.compiler
 {
     /// <summary>
     /// Token types for Solidity language
@@ -37,14 +37,14 @@ namespace SolidityCompiler
         Address,
         String,
         Bytes,
-        
+
         // Identifiers and literals
         Identifier,
         StringLiteral,
         NumberLiteral,
         HexLiteral,
         BoolLiteral,
-        
+
         // Operators
         Plus,
         Minus,
@@ -61,7 +61,7 @@ namespace SolidityCompiler
         And,
         Or,
         Not,
-        
+
         // Delimiters
         OpenParen,
         CloseParen,
@@ -73,10 +73,12 @@ namespace SolidityCompiler
         Comma,
         Colon,
         Dot,
-        
+
         // Special
         Eof,
-        Invalid
+        Invalid,
+        Try,
+        Catch,
     }
 
     /// <summary>
@@ -193,7 +195,6 @@ namespace SolidityCompiler
         {
             if (Current != expected)
                 return false;
-            
             Advance();
             return true;
         }
@@ -548,6 +549,43 @@ namespace SolidityCompiler
     }
 
     /// <summary>
+    /// Represents a block of statements
+    /// </summary>
+    public class BlockNode : AstNode
+    {
+        public List<AstNode> Statements { get; } = new List<AstNode>();
+
+        public override string ToString()
+        {
+            return $"Block with {Statements.Count} statements";
+        }
+    }
+
+    /// <summary>
+    /// Represents a variable declaration
+    /// </summary>
+    public class VariableDeclarationNode : AstNode
+    {
+        public string Type { get; }
+        public string Name { get; }
+        public AstNode Initializer { get; set; }
+        public string Visibility { get; set; } = "internal"; // Default in Solidity
+        public string DataLocation { get; set; } // memory, storage, calldata
+
+        public VariableDeclarationNode(string type, string name)
+        {
+            Type = type;
+            Name = name;
+        }
+
+        public override string ToString()
+        {
+            string location = !string.IsNullOrEmpty(DataLocation) ? $" {DataLocation}" : "";
+            return $"{Type}{location} {Name}";
+        }
+    }
+
+    /// <summary>
     /// Represents a binary expression (e.g., a + b)
     /// </summary>
     public class BinaryExpressionNode : AstNode
@@ -569,80 +607,80 @@ namespace SolidityCompiler
         }
     }
 
-    /// <summary>
-    /// Represents a literal value (number, string, etc.)
-    /// </summary>
-    public class LiteralNode : AstNode
-    {
-        public string Value { get; }
-        public string Type { get; }
+    // /// <summary>
+    // /// Represents a literal value (number, string, etc.)
+    // /// </summary>
+    // public class LiteralNode : AstNode
+    // {
+    //     public string Value { get; }
+    //     public string Type { get; }
 
-        public LiteralNode(string value, string type)
-        {
-            Value = value;
-            Type = type;
-        }
+    //     public LiteralNode(string value, string type)
+    //     {
+    //         Value = value;
+    //         Type = type;
+    //     }
 
-        public override string ToString()
-        {
-            return $"{Type} literal: {Value}";
-        }
-    }
+    //     public override string ToString()
+    //     {
+    //         return $"{Type} literal: {Value}";
+    //     }
+    // }
 
-    /// <summary>
-    /// Represents a variable reference
-    /// </summary>
-    public class VariableReferenceNode : AstNode
-    {
-        public string Name { get; }
+    // /// <summary>
+    // /// Represents a variable reference
+    // /// </summary>
+    // public class VariableReferenceNode : AstNode
+    // {
+    //     public string Name { get; }
 
-        public VariableReferenceNode(string name)
-        {
-            Name = name;
-        }
+    //     public VariableReferenceNode(string name)
+    //     {
+    //         Name = name;
+    //     }
 
-        public override string ToString()
-        {
-            return Name;
-        }
-    }
+    //     public override string ToString()
+    //     {
+    //         return Name;
+    //     }
+    // }
 
-    /// <summary>
-    /// Represents a function call
-    /// </summary>
-    public class FunctionCallNode : AstNode
-    {
-        public string Name { get; }
-        public List<AstNode> Arguments { get; } = new List<AstNode>();
+    // /// <summary>
+    // /// Represents a function call
+    // /// </summary>
+    // public class FunctionCallNode : AstNode
+    // {
+    //     public string Name { get; }
+    //     public List<AstNode> Arguments { get; } = new List<AstNode>();
 
-        public FunctionCallNode(string name)
-        {
-            Name = name;
-        }
+    //     public FunctionCallNode(string name)
+    //     {
+    //         Name = name;
+    //     }
 
-        public override string ToString()
-        {
-            return $"{Name}({string.Join(", ", Arguments)})";
-        }
-    }
+    //     public override string ToString()
+    //     {
+    //         return $"{Name}({string.Join(", ", Arguments)})";
+    //     }
+    // }
 
-    /// <summary>
-    /// Represents a return statement
-    /// </summary>
-    public class ReturnStatementNode : AstNode
-    {
-        public AstNode Expression { get; }
+    // /// <summary>
+    // /// Represents a return statement
+    // /// </summary>
+    // public class ReturnStatementNode : AstNode
+    // {
+    //     public AstNode Expression { get; }
 
-        public ReturnStatementNode(AstNode expression)
-        {
-            Expression = expression;
-        }
+    //     public ReturnStatementNode(AstNode expression)
+    //     {
+    //         Expression = expression;
+    //     }
 
-        public override string ToString()
-        {
-            return $"return {Expression}";
-        }
-    }
+    //     public override string ToString()
+    //     {
+    //         return $"return {Expression}";
+    //     }
+    // }
 
     /// <summary>
     /// Represents an if statement
@@ -2740,5 +2778,22 @@ namespace SolidityCompiler
             
             return bytecode;
         }
+        
+        // public static void Main(string[] args)
+        // {
+        //     if (args.Length == 0)
+        //     {
+        //         Console.WriteLine("Usage: SolidityCompiler <filename>");
+        //         return;
+        //     }
+            
+        //     string source = System.IO.File.ReadAllText(args[0]);
+        //     byte[] bytecode = CompileString(source);
+            
+        //     // Write bytecode to a file
+        //     string outputPath = Path.ChangeExtension(args[0], ".bin");
+        //     File.WriteAllBytes(outputPath, bytecode);
+        //     Console.WriteLine($"Compiled bytecode written to {outputPath}");
+        // }
     }
 }
